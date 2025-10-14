@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using ScottPlot;
 
 class Program
 {
@@ -35,6 +36,16 @@ class Program
             if (Math.Abs(t % 0.5) < 1e-9)
                 Console.WriteLine("{0,6:F1}\t{1,10:F3}\t{2,10:F3}\t{3,10:F3}", t, car.x, car.v, car.a);
         }
+
+        // Plot velocity
+        var plt = new ScottPlot.Plot();
+        plt.Add.Scatter(timeList.ToArray(), velList.ToArray());
+        plt.Title("Velocity vs Time");
+        plt.XLabel("Time (s)");
+        plt.YLabel("Velocity (m/s)");
+        
+        plt.SavePng("velocity_plot.png", 600, 400); // <-- Save the plot as an image
+        Console.WriteLine("Plot saved as velocity_plot.png!");
 
         // Write results to CSV
         string file = "sim_data.csv";

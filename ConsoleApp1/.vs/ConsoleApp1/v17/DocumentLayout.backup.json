@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\cassi\\Documents\\C# Coding\\ConsoleApp1\\",
+  "WorkspaceRootPath": "C:\\Users\\cassi\\Documents\\Workspace\\CSharp\\ConsoleApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9C2D420-BA00-44CA-BB03-50237EF8B25F}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\cassi\\documents\\c# coding\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D9C2D420-BA00-44CA-BB03-50237EF8B25F}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\cassi\\documents\\workspace\\csharp\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9C2D420-BA00-44CA-BB03-50237EF8B25F}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\cassi\\Documents\\C# Coding\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\cassi\\Documents\\Workspace\\CSharp\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\cassi\\Documents\\C# Coding\\ConsoleApp1\\ConsoleApp1\\Program.cs*",
-              "RelativeToolTip": "ConsoleApp1\\Program.cs*",
-              "ViewState": "AgIAAB8AAAAAAAAAAAD4vzcAAABmAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\cassi\\Documents\\Workspace\\CSharp\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "ConsoleApp1\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAADgvykAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-14T09:09:00.404Z",
               "EditorCaption": ""
