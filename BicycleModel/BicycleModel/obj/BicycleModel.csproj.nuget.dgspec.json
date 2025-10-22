@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\BicycleModel.csproj": {}
+    "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\BicycleModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\BicycleModel.csproj": {
+    "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\BicycleModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\BicycleModel.csproj",
+        "projectUniqueName": "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\BicycleModel.csproj",
         "projectName": "BicycleModel",
-        "projectPath": "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\BicycleModel.csproj",
+        "projectPath": "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\BicycleModel.csproj",
         "packagesPath": "C:\\Users\\cassio.freitas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\obj\\",
+        "outputPath": "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cassio.freitas\\AppData\\Roaming\\NuGet\\NuGet.Config",

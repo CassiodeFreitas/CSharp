@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\",
+  "WorkspaceRootPath": "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12F910D1-5E2B-43EB-BFF9-FDB137299CC2}|BicycleModel\\BicycleModel.csproj|c:\\users\\cassio.freitas\\source\\repos\\bicyclemodel\\bicyclemodel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{12F910D1-5E2B-43EB-BFF9-FDB137299CC2}|BicycleModel\\BicycleModel.csproj|c:\\users\\cassio.freitas\\documents\\csharp\\bicyclemodel\\bicyclemodel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{12F910D1-5E2B-43EB-BFF9-FDB137299CC2}|BicycleModel\\BicycleModel.csproj|solutionrelative:bicyclemodel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -14,24 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\Program.cs",
               "RelativeDocumentMoniker": "BicycleModel\\Program.cs",
-              "ToolTip": "C:\\Users\\cassio.freitas\\source\\repos\\BicycleModel\\BicycleModel\\Program.cs",
+              "ToolTip": "C:\\Users\\cassio.freitas\\Documents\\CSharp\\BicycleModel\\BicycleModel\\Program.cs",
               "RelativeToolTip": "BicycleModel\\Program.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAA4wF0AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-20T08:12:37.859Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

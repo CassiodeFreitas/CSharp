@@ -4,6 +4,8 @@
 // methods: front and rear vertical force, front and rear slip angle, front and rear lateral force, vehicle state (lateral and yaw acceleration);
 
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 class Simulation
 {
@@ -19,15 +21,36 @@ class Simulation
         const double simulation_time = 20; // [s]
         const double dt = 1e-3;
 
+        // Create lists to store results
+        var timeList = new List<double>();
+        var gLatList = new List<double>();
+        var nYawList = new List<double>();
+        
         Console.WriteLine("Simulation Started\n");
 
         // Create Simulation Loop
         for (double t = 0; t < simulation_time; t += dt)
         {
             Car.UpdateAero(Vx, dt);
-            Car.UpdateTyreForces(Vx, dt);
-            Car.UpdateSlipAngles(Vx, dt, SA);
-            Car.UpdateCarStates(SA);
+            Car.UpdateSlipAngles(Vx, SA, dt);
+            Car.UpdateTyreForces(SA, dt);
+            Car.UpdateCarStates(Vx, SA, dt);
+
+            // Save data
+            timeList.Add(t);
+            gLatList.Add(Car.ay);
+            nYawList.Add(Car.nYaw);
+        }
+
+        // Write simulation data to .csv
+        string file = "sim_data.csv";
+        using (StreamWriter writer = new StreamWriter(file))
+        {
+            writer.WriteLine("Time, Lateral Acceleration, Yaw Rate");
+            for (int i = 1; i < timeList.Count; i++)
+            {
+                writer.WriteLine($"{timeList[i]:F2}, {gLatList[i]:F4}, {nYawList[i]:F4}");
+            }
         }
         Console.WriteLine("Simulation Complete\n");
     }
@@ -42,24 +65,25 @@ class Vehicle
     public FrontTyre Front { get; set; } = new FrontTyre();
     public RearTyre Rear { get; set; } = new RearTyre();
     // Vertical load results
-    public double FzF { get; set; }
-    public double FzR { get; set; }
+    public double FzF { get; set; } // [N]
+    public double FzR { get; set; } // [N]
     // Vertical aero loads
-    public double FzFAero { get; set; }
-    public double FzRAero { get; set; }
+    public double FzFAero { get; set; } // [N]
+    public double FzRAero { get; set; } // [N]
     // Slip angles
-    public double aSlipF { get; set; }
-    public double aSlipR { get; set; }
+    public double aSlipF { get; set; } // [deg]
+    public double aSlipR { get; set; } // [deg]
     // Tyre lateral forces
-    public double FyF { get; set; }
-    public double FyR { get; set; }
+    public double FyF { get; set; } // [N]
+    public double FyR { get; set; } // [N]
     // Car states
-    public double ay {  get; set; }
-    public double Vy { get; set; }
-    public double Y { get; set; }
-    public double aYaw { get; set; }
-    public double nYaw { get; set; }
-    public double dnYaw { get; set; }
+    public double ay {  get; set; } // [m/s^2]
+    public double Vy { get; set; } // [m/s]
+    public double Y { get; set; } // [m]
+    public double dnYaw { get; set; } // [rad/s^2]
+    public double nYaw { get; set; } // [rad/s]
+    public double aYaw { get; set; } // [rad]
+
 
     // Update Aero
     public void UpdateAero(double Vx, double dt)
@@ -85,9 +109,14 @@ class Vehicle
     }
 
     // Update car states
-    public void UpdateCarStates(double SA)
+    public void UpdateCarStates(double Vx, double SA, double dt)
     {
-        ay = Math.Cos(SA / 57.3);
+        dnYaw = (ChassisModel.a * Math.Cos(SA / 57.3) * FyF - ChassisModel.b * FyR) / ChassisModel.Izz ;
+        nYaw += dnYaw  * dt;
+        aYaw += nYaw * dt;
+        ay = (Math.Cos(SA / 57.3) * FyF + FyR) / ChassisModel.m;
+        Vy += (ay - Vx * nYaw) * dt;
+        Y += Vy * dt ;
     }
 
     // Define Vehicle Parameters

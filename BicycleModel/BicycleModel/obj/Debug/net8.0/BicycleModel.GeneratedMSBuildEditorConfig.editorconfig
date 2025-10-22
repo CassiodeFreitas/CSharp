@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BicycleModel
-build_property.ProjectDir = C:\Users\cassio.freitas\source\repos\BicycleModel\BicycleModel\
+build_property.ProjectDir = C:\Users\cassio.freitas\Documents\CSharp\BicycleModel\BicycleModel\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
