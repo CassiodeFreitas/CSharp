@@ -1,0 +1,9 @@
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.csproj.AssemblyReference.cache
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\VehicleSimPlot.Form1.resources
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.csproj.GenerateResource.cache
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.AssemblyInfoInputs.cache
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.AssemblyInfo.cs
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.csproj.CoreCompileInputs.cache
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.sourcelink.json
+C:\Users\cassio.freitas\Documents\CSharp\BicycleModelPlot\BicycleModelPlot\obj\Debug\net8.0-windows\BicycleModelPlot.Form1.resources

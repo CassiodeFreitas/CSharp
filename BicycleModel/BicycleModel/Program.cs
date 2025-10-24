@@ -16,7 +16,8 @@ class Simulation
 
         // Define Simulation Constants
         const double Vx = 120 / 3.6; // [m/s]
-        const double SA = 11; // [deg]
+        const double SR = 10; // [-]
+        const double SA = 11 / SR; // [deg]
         const double slope = 2; // [-]
         const double simulation_time = 20; // [s]
         const double dt = 1e-3;
@@ -24,10 +25,19 @@ class Simulation
         // Create lists to store results
         var timeList = new List<double>();
         var gLatList = new List<double>();
+        var vLatList = new List<double>();
         var nYawList = new List<double>();
+        var FyFList = new List<double>();
+        var FyRList = new List<double>();
+        var FzFList = new List<double>();
+        var FzRList = new List<double>();
+        var aSlipFList = new List<double>();
+        var aSlipRList = new List<double>();
         
         Console.WriteLine("Simulation Started\n");
 
+        Console.WriteLine("T s\tgLat m/s^2\tvLat m/s\tnYaw rad/s\tFyF N\tFyR N\tFzF N\tFzR N\taSlipF N\taSlipR N\n");
+        
         // Create Simulation Loop
         for (double t = 0; t < simulation_time; t += dt)
         {
@@ -39,20 +49,32 @@ class Simulation
             // Save data
             timeList.Add(t);
             gLatList.Add(Car.ay);
+            vLatList.Add(Car.Vy);
             nYawList.Add(Car.nYaw);
+            FyFList.Add(Car.FyF);
+            FyRList.Add(Car.FyR);
+            FzFList.Add(Car.FzF);
+            FzRList.Add(Car.FzR);
+            aSlipFList.Add(Car.aSlipF);
+            aSlipRList.Add(Car.aSlipR);
+
+            if(Math.Abs(t % 0.5) < 1e-9)
+            {
+                Console.WriteLine($"{t,6:F1}\t{Car.ay,10:F4}\t{Car.Vy:F4}\t{Car.nYaw,10:F4}\t{Car.FyF,10:F4}\t{Car.FyR,10:F4}\t{Car.FzF,10:F4}\t{Car.FzR,10:F4}\t{Car.aSlipF,10:F4}\t{Car.aSlipR,10:F4}\n");
+            }
         }
 
         // Write simulation data to .csv
         string file = "sim_data.csv";
         using (StreamWriter writer = new StreamWriter(file))
         {
-            writer.WriteLine("Time, Lateral Acceleration, Yaw Rate");
+            writer.WriteLine("Time, Lateral Acceleration, Lateral Velocity, Yaw Rate, FyF, FyR, FzF, FzR, aSlipF, aSlipR");
             for (int i = 1; i < timeList.Count; i++)
             {
-                writer.WriteLine($"{timeList[i]:F2}, {gLatList[i]:F4}, {nYawList[i]:F4}");
+                writer.WriteLine($"{timeList[i]:F2}, {gLatList[i]:F4}, {vLatList[i]:F4}, {nYawList[i]:F4}, {FyFList[i]:F4}, {FyRList[i]:F4}, {FzFList[i]:F4}, {FzRList[i]:F4}, {aSlipFList[i]:F4}, {aSlipFList[i]:F4}");
             }
         }
-        Console.WriteLine("Simulation Complete\n");
+        Console.WriteLine("Simulation Complete!\n");
     }
 }
 
@@ -95,28 +117,28 @@ class Vehicle
     // Update tyre forces
     public void UpdateTyreForces(double SA, double dt)
     {
-        FzF = FzFAero + ChassisModel.m * Const.g * (ChassisModel.b / ChassisModel.L);
-        FzR = FzRAero + ChassisModel.m * Const.g * (ChassisModel.a / ChassisModel.L);
-        FyF = aSlipF * Math.Sin(Front.CF * Math.Atan(Front.BF * SA - Front.EF * (Front.BF * SA - Math.Atan(Front.BF * SA)))) * (FzF * Front.a1F + Front.a2F) * -1;
-        FyR = aSlipF * Math.Sin(Rear.CR * Math.Atan(Rear.BR * SA - Rear.ER * (Rear.BR * SA - Math.Atan(Rear.BR * SA)))) * (FzR * Rear.a1R + Rear.a2R) * -1;
+        FzF = FzFAero + ChassisModel.m * Const.g * (ChassisModel.b / ChassisModel.L); // OK
+        FzR = FzRAero + ChassisModel.m * Const.g * (ChassisModel.a / ChassisModel.L); // OK
+        FyF = aSlipF * Math.Sin(Front.CF * Math.Atan(Front.BF * SA - Front.EF * (Front.BF * SA - Math.Atan(Front.BF * SA)))) * (FzF * (Front.a1F + Front.a2F)) * -1;
+        FyR = aSlipR * Math.Sin(Rear.CR * Math.Atan(Rear.BR * SA - Rear.ER * (Rear.BR * SA - Math.Atan(Rear.BR * SA)))) * (FzR * (Rear.a1R + Rear.a2R)) * -1;
     }
 
     // Update slip angles
     public void UpdateSlipAngles(double Vx, double SA, double dt)
     {
-        aSlipF = 57.3 * (ay - nYaw * ChassisModel.a) / Vx - SA;
-        aSlipR = 57.3 * (ay - nYaw * ChassisModel.b) / Vx;
+        aSlipF = 57.3 * (Vy + nYaw * ChassisModel.a) / Vx - SA; // OK
+        aSlipR = 57.3 * (Vy - nYaw * ChassisModel.b) / Vx; // OK
     }
 
     // Update car states
     public void UpdateCarStates(double Vx, double SA, double dt)
     {
-        dnYaw = (ChassisModel.a * Math.Cos(SA / 57.3) * FyF - ChassisModel.b * FyR) / ChassisModel.Izz ;
-        nYaw += dnYaw  * dt;
-        aYaw += nYaw * dt;
-        ay = (Math.Cos(SA / 57.3) * FyF + FyR) / ChassisModel.m;
-        Vy += (ay - Vx * nYaw) * dt;
-        Y += Vy * dt ;
+        dnYaw = (ChassisModel.a * Math.Cos(SA / 57.3) * FyF - ChassisModel.b * FyR) / ChassisModel.Izz; // OK
+        nYaw += dnYaw  * dt; // OK
+        aYaw += nYaw * dt; // OK
+        ay = (Math.Cos(SA / 57.3) * FyF + FyR) / ChassisModel.m; // OK
+        Vy += (ay - Vx * nYaw) * dt; // OK
+        Y += Vy * dt; // OK
     }
 
     // Define Vehicle Parameters
